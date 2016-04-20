@@ -1,0 +1,44 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE struts PUBLIC
+   "-//Apache Software Foundation//DTD Struts Configuration 2.0//EN"
+   "http://struts.apache.org/dtds/struts-2.0.dtd">
+<struts>
+	<constant name="struts.devMode" value="true"/>
+	<constant name="struts.custom.i18n.resources" value="global"/>
+	<constant name="struts.locale" value="vi_VN" />
+	<constant name="struts.enable.SlashesInActionNames" value="true"/>
+	<constant name="struts.mapper.alwaysSelectFullNamespace" value="false"/>
+	<constant name="struts.multipart.maxSize" value="2147483648"/>
+	<package name="struts-abstract" extends="struts-default,json-default" namespace="/">
+		<result-types>
+			<result-type name="tiles" class="org.apache.struts2.views.tiles.TilesResult" />
+		</result-types>
+		<global-results>
+			<result name="error" type="tiles">home.page</result>
+			<result name="login">/admin/login/login.jsp</result>
+		</global-results>
+		<action name="" class="abstractAction">
+			<result name="success" type="redirect">/home</result>
+		</action>
+		<action name="index" class="abstractAction" method="home">
+			<result name="success" type="tiles">home.page</result>
+		</action>
+		<action name="quantri" class="abstractAction" method="admin">
+			<result name="success" type="tiles">admin.page</result>
+		</action>
+		<action name="quantri/upload" class="abstractAction" method="upload">
+			<result name="success" type="redirect">/quantri</result>
+		</action>
+		<action name="login" class="abstractAction" method="login">
+			<result name="success" type="redirect">/quantri</result>
+		</action>
+		<action name="cat/*/delete" class="abstractAction" method="deleteCat">
+			<param name="catId">{1}</param>
+			<result name="success" type="redirect">/admin</result>
+		</action>
+		<action name="movie/*/delete" class="abstractAction" method="deleteMovie">
+			<param name="id">{1}</param>
+			<result name="success" type="redirect">/admin</result>
+		</action>
+	</package>
+</struts>

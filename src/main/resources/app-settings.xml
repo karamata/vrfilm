@@ -1,0 +1,10 @@
+<configuration>
+	<app-setting>
+		<param name="app-version" value="3"/>
+		<param name="movie-real-path" value="/Applications/XAMPP/htdocs/movie/"/>
+		<param name="movie-url-path" value="http://localhost/movie/"/>
+		<param name="resource-path" value="http://localhost:8080/"/>
+		<param name="admin" value="admin"/>
+		<param name="password" value="password"/>
+	</app-setting>
+</configuration>

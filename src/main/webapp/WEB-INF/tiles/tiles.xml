@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+
+<!DOCTYPE tiles-definitions PUBLIC
+   "-//Apache Software Foundation//DTD Tiles Configuration 2.0//EN"
+   "http://tiles.apache.org/dtds/tiles-config_2_0.dtd">
+
+<tiles-definitions>
+
+	<definition name="full.layout" template="/jsp/layout/fullLayout.jsp">
+		<put-attribute name="title" value="VRFilm.vn - Giải pháp giải trí đa phương tiện danh cho xe khách chất lượng cao" />
+		<put-attribute name="footer" value="/jsp/layout/footer.jsp" />
+		<put-attribute name="header" value="/jsp/layout/header.jsp" />
+	</definition>
+	
+	<definition name="admin.layout" template="/admin/layout/fullLayout.jsp">
+		<put-attribute name="title" value="VRFilm.vn - Giải pháp giải trí đa phương tiện danh cho xe khách chất lượng cao" />
+		<put-attribute name="footer" value="/admin/layout/footer.jsp" />
+		<put-attribute name="header" value="/admin/layout/header.jsp" />
+	</definition>
+	
+	<definition name="ajax.layout" template="/jsp/layout/ajaxLayout.jsp"></definition>
+
+	<definition name="home.page" extends="full.layout">
+		<put-attribute name="body" value="/jsp/home/home.jsp" />
+	</definition>
+	
+	<definition name="admin.page" extends="admin.layout">
+		<put-attribute name="body" value="/admin/index/index.jsp" />
+	</definition>
+</tiles-definitions>
