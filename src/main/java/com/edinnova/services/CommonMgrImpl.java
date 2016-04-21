@@ -54,8 +54,15 @@ public class CommonMgrImpl implements CommonMgr {
 	}
 	
 	@Override
-	public List<Movie> getListMovies() throws Exception {
+	public List<Movie> getListMovies(Long catId, Long exceptId) throws Exception {
 		List<Criterion> listCondition = new ArrayList<Criterion>();
+		if(catId != null) {
+			listCondition.add(Restrictions.eq("category.id", catId));
+		}
+		if(exceptId != null) {
+			listCondition.add(Restrictions.ne("movieId", exceptId));
+		}
 		return repo.getListByCondition(Movie.class, listCondition, Order.desc("movieName"));
 	}
+	
 }

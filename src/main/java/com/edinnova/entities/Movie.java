@@ -2,8 +2,10 @@ package com.edinnova.entities;
 
 import java.io.Serializable;
 import java.lang.reflect.Field;
+import java.util.ArrayList;
 import java.util.Date;
 import java.util.HashMap;
+import java.util.List;
 import java.util.Map;
 
 import javax.persistence.Column;
@@ -23,6 +25,8 @@ import org.hibernate.annotations.Cache;
 import org.hibernate.annotations.CacheConcurrencyStrategy;
 import org.hibernate.annotations.Parameter;
 import org.hibernate.annotations.Type;
+
+import com.edinnova.services.CommonMgr;
 
 @Entity
 @Cache(region="movie", usage=CacheConcurrencyStrategy.READ_WRITE)
@@ -128,5 +132,30 @@ public class Movie implements Serializable {
 
 	public void setCategory(Category category) {
 		this.category = category;
+	}
+	
+	@Transient
+	protected List<Movie> listRelateMovie;
+	
+	public List<Movie> loadListRelateMovie(CommonMgr commonMgr) {
+		if(listRelateMovie != null) {
+			return listRelateMovie;
+		}
+		
+		try {
+			listRelateMovie = commonMgr.getListMovies(this.category.getCatId(), this.movieId);
+		} catch(Exception e) {
+			listRelateMovie = new ArrayList<Movie>();
+		}
+		
+		return listRelateMovie;
+	}
+
+	public List<Movie> getListRelateMovie() {
+		return listRelateMovie;
+	}
+
+	public void setListRelateMovie(List<Movie> listRelateMovie) {
+		this.listRelateMovie = listRelateMovie;
 	}
 }

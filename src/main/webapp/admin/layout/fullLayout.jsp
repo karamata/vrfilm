@@ -7,7 +7,7 @@
   <head>
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <title>AdminLTE 2 | Dashboard</title>
+    <title><tiles:insertAttribute name="title"/></title>
     <!-- Tell the browser to be responsive to screen width -->
     <meta content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no" name="viewport">
     <!-- Bootstrap 3.3.5 -->
@@ -76,7 +76,7 @@
 
       <header class="main-header">
         <!-- Logo -->
-        <a href="/admin" class="logo">
+        <a href="/quantri" class="logo">
           <!-- mini logo for sidebar mini 50x50 pixels -->
           <span class="logo-mini"><b>VR</b></span>
           <!-- logo for regular state and mobile devices -->
@@ -135,16 +135,53 @@
           <!-- sidebar menu: : style can be found in sidebar.less -->
           <ul class="sidebar-menu">
             <li class="header"><s:property value="getText('menu.navigator.title')"/></li>
-            <li class="active">
-              <a href="/admin/category">
-                <i class="fa fa-th"></i> <span><s:property value="getText('film.category.title')"/></span>
-              </a>
-            </li>
-            <li>
-              <a href="/admin/video">
-	            <i class="fa fa-video-camera"></i> <span><s:property value="getText('video.title')"/></span>
-	          </a>
-            </li>
+            <% 
+						if("/quantri".equals(request.getAttribute("javax.servlet.forward.request_uri"))) {
+					%>
+	            <li class="active">
+	              <a href="javascript:void(0);">
+	                <i class="fa fa-dashboard"></i> <span><s:property value="getText('film.category.title')"/></span>
+	              </a>
+	            </li>
+            <%} else { %>
+            	<li>
+	              <a href="/quantri">
+	                <i class="fa fa-dashboard"></i> <span><s:property value="getText('film.category.title')"/></span>
+	              </a>
+	            </li>
+            <%} %>
+            
+            <% 
+						if("/quantri/category".equals(request.getAttribute("javax.servlet.forward.request_uri"))) {
+					%>
+	            <li class="active">
+	              <a href="javascript:void(0);">
+	                <i class="fa fa-th"></i> <span><s:property value="getText('film.category.title')"/></span>
+	              </a>
+	            </li>
+            <%} else { %>
+            	<li>
+	              <a href="/quantri/category">
+	                <i class="fa fa-th"></i> <span><s:property value="getText('film.category.title')"/></span>
+	              </a>
+	            </li>
+            <%} %>
+            
+            <% 
+						if("/quantri/movie".equals(request.getAttribute("javax.servlet.forward.request_uri"))) {
+					%>
+	            <li class="active">
+	              <a href="javascript:void(0);">
+		            <i class="fa fa-video-camera"></i> <span><s:property value="getText('video.title')"/></span>
+		          </a>
+	            </li>
+            <%} else { %>
+            	<li>
+	              <a href="/quantri/movie">
+		            <i class="fa fa-video-camera"></i> <span><s:property value="getText('video.title')"/></span>
+		          </a>
+	            </li>
+            <%} %>
           </ul>
         </section>
         <!-- /.sidebar -->
@@ -173,7 +210,7 @@
         <div class="pull-right hidden-xs">
           <b>Version</b> 1.0.0
         </div>
-        <strong>Copyright &copy; 2016 <a href="http://almsaeedstudio.com">EdInnova team</a>.</strong> All rights reserved.
+        <strong>Copyright &copy; 2016 <a href="http://edinnova.com">EdInnova team</a>.</strong> All rights reserved.
       </footer>
     </div><!-- ./wrapper -->
   </body>

@@ -17,7 +17,7 @@ public interface CommonMgr {
 
 	List<Category> getListCategory() throws Exception;
 
-	List<Movie> getListMovies() throws Exception;
+	List<Movie> getListMovies(Long catId, Long exceptId) throws Exception;
 
 	<T> void deleteEntity(T entity) throws Exception;
 

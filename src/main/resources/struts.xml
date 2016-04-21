@@ -18,7 +18,7 @@
 			<result name="login">/admin/login/login.jsp</result>
 		</global-results>
 		<action name="" class="abstractAction">
-			<result name="success" type="redirect">/home</result>
+			<result name="success" type="redirect">/index</result>
 		</action>
 		<action name="index" class="abstractAction" method="home">
 			<result name="success" type="tiles">home.page</result>
@@ -26,19 +26,25 @@
 		<action name="quantri" class="abstractAction" method="admin">
 			<result name="success" type="tiles">admin.page</result>
 		</action>
-		<action name="quantri/upload" class="abstractAction" method="upload">
-			<result name="success" type="redirect">/quantri</result>
-		</action>
 		<action name="login" class="abstractAction" method="login">
 			<result name="success" type="redirect">/quantri</result>
 		</action>
 		<action name="cat/*/delete" class="abstractAction" method="deleteCat">
 			<param name="catId">{1}</param>
-			<result name="success" type="redirect">/admin</result>
+			<result name="success" type="redirect">quantri/category</result>
 		</action>
 		<action name="movie/*/delete" class="abstractAction" method="deleteMovie">
 			<param name="id">{1}</param>
-			<result name="success" type="redirect">/admin</result>
+			<result name="success" type="redirect">quantri/movie</result>
+		</action>
+		<action name="quantri/category" class="abstractAction" method="category">
+			<result name="success" type="tiles">admin.category.page</result>
+		</action>
+		<action name="quantri/movie" class="abstractAction" method="video">
+			<result name="success" type="tiles">admin.video.page</result>
+		</action>
+		<action name="watch-movie" class="abstractAction" method="watchMovie">
+			<result name="success" type="tiles">watch.movie.page</result>
 		</action>
 	</package>
 </struts>

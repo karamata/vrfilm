@@ -24,7 +24,19 @@
 		<put-attribute name="body" value="/jsp/home/home.jsp" />
 	</definition>
 	
+	<definition name="watch.movie.page" extends="full.layout">
+		<put-attribute name="body" value="/jsp/home/watch.jsp" />
+	</definition>
+	
 	<definition name="admin.page" extends="admin.layout">
 		<put-attribute name="body" value="/admin/index/index.jsp" />
+	</definition>
+	
+	<definition name="admin.category.page" extends="admin.layout">
+		<put-attribute name="body" value="/admin/category/category.jsp"/>
+	</definition>
+	
+	<definition name="admin.video.page" extends="admin.layout">
+		<put-attribute name="body" value="/admin/video/video.jsp"/>
 	</definition>
 </tiles-definitions>
